@@ -8,13 +8,14 @@ function App() {
   const updateList = (newListItem) => {
     setList([...list, newListItem]);
   }
-  const deleteList = (itemDelete) => {
-    const newList = list.filter(!list.includes(itemDelete))
+  const deleteList = (itemDelete,i) => {
+    const newList = list.filter(itemDelete => list.indexOf(itemDelete) !== i)
     setList([...newList])
   }
   return (
     <div className="App">
       <ToDo onNewList={updateList} />
+      {/* <ToDoView list={list} /> */}
       <ToDoView list={list} onListDelete={deleteList} />
     </div>
   );

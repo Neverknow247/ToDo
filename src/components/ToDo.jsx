@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 
 const ToDo = props => {
-    const [list, setList] = useState([]);
     const [item, setItem] = useState("");
 
+    let newItem = {
+        name: "",
+        checked: false
+    };
+
     const changeHandler = e => {
+        newItem.name = e.target.value
         setItem(e.target.value)
-    }
+    };
 
     const submitHandler = e => {
         e.preventDefault()
-        setList([...list, item]);
         props.onNewList(item);
         setItem("");
-    }
+    };
     return(
         <>
         <form onSubmit={submitHandler}>
